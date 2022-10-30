@@ -1,0 +1,26 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="css/_shipping.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <referenceBlock name="logo">
+            <arguments>
+                <argument name="logo_file" xsi:type="string">images/logo.svg</argument>
+                <argument name="logo_width" xsi:type="number">100</argument>
+                <argument name="logo_height" xsi:type="number">100</argument>
+                <argument name="logo_alt" xsi:type="string">svg logo</argument>
+            </arguments>
+        </referenceBlock>
+        <referenceContainer name="header.container">
+            <container label="Page Header Info" htmlTag="div" before="header.panel.wrapper"
+                       htmlClass="shipping-header-info">
+                <block class="Magento\Framework\View\Element\Template" name="top-info-block"
+                       template="Magento_Theme::shipping.phtml" ifconfig="carriers/freeshipping/active"/>
+            </container>
+        </referenceContainer>
+        <move element="form.subscribe" destination="page.wrapper"
+              after="page.bottom.container" before="footer-container"/>
+
+    </body>
+</page>
